@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
 
 
-    $sql = "INSERT INTO users_tbl (first_name, last_name, email_address, password)
+    $sql = "INSERT INTO users_tbl (first_name, last_name, email, password)
     VALUES ('" . $firstname . "','" . $lastname . "','" . $email . "','" . $password . "')";
 
     if (mysqli_query($connection, $sql)) {
