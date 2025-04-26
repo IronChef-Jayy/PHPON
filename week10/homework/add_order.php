@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     VALUES ('" . $productId . "','" . $productName . "','" . $usersId . "')";
 
     if (mysqli_query($connection, $sql)) {
-     echo '<p><span class="form-success">' . $usersId . ' has ordered a product.</span></p>';
+     echo '<p><span class="form-success">' . 'User ' .  $usersId . ' has ordered a product.</span></p>';
     } else {
      echo "Error: " . $sql . "<br>" . mysqli_error($connection);
     }
