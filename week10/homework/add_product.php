@@ -4,13 +4,16 @@
 <meta charset="utf-8">
 <title>Connect to MySQL</title>
 </head>
-
 <body>
+
+<div class="menu">
+  <?php include 'navigation.php' ?>
+</div>
+
 <main>
 <section>
 <article>
 <h1>Add Product</h1>
-
 
 <form action="add_product.php" method="post">
     <input type="text" name="product-name" id="product-name" placeholder="Product Name Here" value="<?php if (isset($_POST['product-name'])) { print htmlspecialchars($_POST['product-name']); } ?>">
@@ -22,6 +25,8 @@
     <br />
     <input type="submit">
 <?php
+
+
 
 // Check if the form has been submitted:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
