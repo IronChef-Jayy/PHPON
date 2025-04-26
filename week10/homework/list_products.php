@@ -16,6 +16,11 @@ text-align: center;
 </style>
 </head>
 <body>
+
+<div class="menu">
+  <?php include 'navigation.php' ?>
+</div>
+
 <?php
 require('../../dbconnect.php');
 

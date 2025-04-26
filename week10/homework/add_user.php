@@ -6,6 +6,10 @@
 </head>
 
 <body>
+
+<div class="menu">
+  <?php include 'navigation.php' ?>
+</div>
 <main>
 <section>
 <article>
@@ -63,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    require('dbconnection.php');
+    require('../../dbconnect.php');
 
     
 
@@ -72,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     VALUES ('" . $firstname . "','" . $lastname . "','" . $email . "','" . $password . "')";
 
     if (mysqli_query($connection, $sql)) {
-     echo '<p><span class="form-success">' . $firstname . ' ' . $lastname . ' added as a new user.</span></p>';
+     echo '<p><span class="form-success">' . $firstname . ' ' . $lastname . ' was added as a new user.</span></p>';
     } else {
      echo "Error: " . $sql . "<br>" . mysqli_error($connection);
      }
