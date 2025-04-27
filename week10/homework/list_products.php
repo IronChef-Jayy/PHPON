@@ -2,12 +2,16 @@
 <html>
 <head>
 <title>List Products</title>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 <style>
 td {
-width: 100px;
+width: 250px;
+padding: 20px;
 }
 thead {
 font-weight: bold;
+font-size: 1.25rem;
+color: rebeccapurple;
 }
 .center {
 text-align: center;
@@ -24,13 +28,13 @@ text-align: center;
 <?php
 require('../../dbconnect.php');
 
-echo "<h1>List of Products</h1>";
+echo "<h1 class='text-6xl text-indigo-500 mt-28 mb-8 mx-24'>List of Products</h1>";
 
 $query = "SELECT * FROM products_tbl";
 $result = mysqli_query($connection, $query);
 
 
-echo "<table>
+echo "<table class='table-auto border-gray-500 shadow-2 shadow-indigo-500'>
         <thead>
             <td class='center'>ID</td>
             <td>Name</td>
@@ -42,7 +46,7 @@ echo "<table>
         echo "<tr>
                 <td class='center'>" . $row['product_id'] . "</td>
                 <td>" . $row['product_name'] . "<td> " . $row['product_description'] . "</td>
-                <td> " . $row['product_price'] . "</td>
+                <td> " . '$' . $row['product_price'] . "</td>
              </tr>";
             }
 echo "</table>";
