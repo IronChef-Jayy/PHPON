@@ -30,7 +30,12 @@ require('../../dbconnect.php'); // use require because we want to force this to 
 
 echo "<h1 class='text-6xl text-blue-500 mt-28 mb-8 mx-24'>List of Orders</h1>";
 //And now to perform a simple query to make sure it's working
-$query = "SELECT * FROM order_tbl";
+$query = "SELECT order_id, products_tbl.product_id, prod_name, product_price, first_name, last_name, email
+FROM users_tbl 
+INNER JOIN orders_tbl 
+ON users_tbl.users_id = orders_tbl.customer_id
+INNER JOIN products_tbl
+ON orders_tbl.product_id = products_tbl.product_id";
 $result = mysqli_query($connection, $query);
 
 
@@ -40,7 +45,10 @@ echo "
             <td class='center'>ID</td>
             <td>Product ID</td>
             <td>Product Name</td>
-            <td>User's ID</td>
+            <td>Price</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Email</td>
         </thead>"; // open table and include table headings
 
         while ($row = mysqli_fetch_assoc($result)) {
@@ -49,7 +57,10 @@ echo "
                 <td class='center'>" . $row['order_id'] . "</td>
                 <td> " . $row['product_id'] . "</td>
                 <td>" . $row['prod_name'] . "</td>
-                <td> " . $row['users_id'] . "</td>
+                <td> " . '$' . $row['product_price'] . "</td>
+                <td> " . $row['first_name'] . "</td>
+                <td> " . $row['last_name'] . "</td>
+                <td> " . $row['email'] . "</td>
             </tr
         >";
         }
