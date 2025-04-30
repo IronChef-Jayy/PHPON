@@ -42,7 +42,7 @@ $result = mysqli_query($connection, $query);
 echo "
     <table class='table-auto border-gray-500 shadow-2 shadow-blue-500'>
         <thead>
-            <td class='center'>ID</td>
+            <td class='center'>Order ID</td>
             <td>Product ID</td>
             <td>Product Name</td>
             <td>Price</td>
