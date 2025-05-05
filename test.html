@@ -1,1 +1,169 @@
 <h1>Hello Ladies</h1> this is a test
+
+
+
+
+<!-- SQL COMMANDS
+
+CREATE TABLE order_tbl (
+    order_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    product_id INT(6) NULL,
+    users_id INT(6) NULL,
+    order_status VARCHAR(30) NOT NULL DEFAULT 'Pending',
+    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Adding a new column to a table
+ALTER TABLE order_tbl ADD prod_name VARCHAR(255) AFTER product_id;
+
+ALTER TABLE users_tbl ADD password VARCHAR(255) AFTER email;
+
+INSERT INTO order_tbl (product_id, prod_name, users_id)
+VALUES ('8', 'Grandma Sugar Cookies', '8');
+
+INSERT INTO order_tbl (product_id, prod_name, users_id)
+VALUES (NULL, 'Air Jordan 13 He Got Game', NULL);
+
+
+CREATE TABLE products_tbl (
+product_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+product_name VARCHAR(30) NOT NULL,
+product_description VARCHAR(255) NOT NULL,
+product_price DOUBLE(10, 2),
+created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO products_tbl (product_name, product_description, product_price)
+VALUES ('Ginger Cookies', 'Ginger, Shortbread', '1.49');
+
+select * from products_tbl;
+
+select * from users_tbl;
+
+select * from order_tbl;
+
+
+CREATE TABLE students (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE
+);
+
+CREATE TABLE enrollments (
+    enrollment_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    course_name VARCHAR(100),
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+        ON DELETE CASCADE
+);
+ 
+
+select * from students
+
+INSERT INTO students (name, email)
+VALUES ("Scott Summers", "cyclops@xmen.com"), ("Bobby Drake", "icemancold@xmen.com"), ("Ororo Munroe", "storm@xmen.com"), ("Kurt Wagner", "nightcrawler@xmen.com"), ("Erik Magnus-Lehnsher", "magneto@xmen.com"), ("Matt Murdock", "daredevil@marvel.com"), ("Felicia Hardy", "blackcat@spiderman.com"), ("Cain Marko", "thejuggernaut@xmen.com");
+
+-- insert 5 students
+
+select * from enrollments;
+
+INSERT INTO enrollments (student_id, course_name)
+VALUES (1, "Lightsabers"), (2, "Star Flight"), (6, "Ice Manipulation"), (9, "Magnetism"), (5, "Lasik"), (11, "Supreme Gymnastics"), (8, "Teleportation"), (10, "Thermo-visuals"), (12,"Cyttorak"), (7, "Manipulation of the Elements") ;
+
+
+SELECT students.name, enrollments.course_name FROM students INNER JOIN enrollments ON students.student_id = enrollments.student_id;
+
+SELECT students.name, enrollments.course_name FROM students LEFT JOIN enrollments ON students.student_id = enrollments.student_id;
+
+SELECT students.name, enrollments.course_name FROM students RIGHT JOIN enrollments ON students.student_id = enrollments.student_id;
+
+-- alter and add columns/categories to tables using a foreign key
+ALTER TABLE order_tbl
+ADD CONSTRAINT fk_customer_id
+FOREIGN KEY (customer_id) REFERENCES customers(customer_id);
+
+
+
+-- *creating a foreign key within 3 example tables: transactions, customers, orders
+-- CREATE TABLE transactions (
+--      transaction_id INT PRIMARY KEY AUTO_INCREMENT,
+--      amount DECIMAL(5,2)
+--      customer_id INT,
+-- *add a foreign constraint to our customer id column on next line write, 
+-- FOREIGN KEY(column we're applying this constraint to), then REFERENCES *the second table customers(the column of the primary key)
+--      FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
+
+--);
+
+-- *to drop/delete a foreign key
+-- ALT TABLE name of table that has foreign key constraints
+-- DROP FOREIGN KEY name of foreign key
+
+-- *to give a foreign key a unique name - to apply a foreign key to a table that already exists
+-- ALT CONSTRAINT name you want to name the key
+-- FOREIGN KEY(name of column) REFERENCES name of second table(the column that has the primary key)
+
+
+
+-- *auto increment rows starting at 1000 or whatever number you chose
+-- AUTO_INCREMENT = 1000
+
+
+
+
+-- DROP TABLES
+DROP TABLE orders_tbl;
+
+DROP TABLE products_tbl;
+
+CREATE TABLE products_tbl (
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(100) NOT NULL,
+    product_description VARCHAR(255),
+    product_price DECIMAL(5,2),
+    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+SELECT * from products_tbl;
+
+CREATE TABLE orders_tbl (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT,
+    prod_name VARCHAR(255),
+    customer_id INT UNSIGNED,
+    order_status VARCHAR(30) NOT NULL DEFAULT 'Pending',
+    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (product_id) REFERENCES products_tbl(product_id)
+        ON DELETE CASCADE
+);
+
+SELECT * from orders_tbl;
+
+
+ALTER TABLE orders_tbl
+ADD CONSTRAINT fk_customer_id
+FOREIGN KEY(customer_id) REFERENCES users_tbl(users_id);
+
+
+CREATE TABLE grantstudents (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_name VARCHAR(100) NOT NULL,
+    student_email VARCHAR(100) UNIQUE,
+    student_address VARCHAR(255)
+);
+
+CREATE TABLE grantenrollments (
+    enrollment_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    addresses VARCHAR(255),
+    course_name VARCHAR(100),
+    FOREIGN KEY (student_id) REFERENCES grantstudents(student_id)
+        ON DELETE CASCADE
+);
+ 
+
+-->

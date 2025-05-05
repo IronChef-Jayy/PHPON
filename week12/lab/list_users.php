@@ -25,6 +25,14 @@ text-align:center;
   <?php include 'navigation.php' ?>
 </div>
 
+<!-- redirect completion message for edit_user.php -->
+<?php 
+  if ($_GET['msg']) {
+    echo "<p class='bg-green-500' id='flash-msg'>User Successfully Updated!</p>";
+  }
+?>
+
+
 
 <?php 
 require('../../dbconnect.php'); // use require because we want to force this to exist before running our queries
@@ -32,10 +40,23 @@ require('../../dbconnect.php'); // use require because we want to force this to 
 echo "<h1 class='text-6xl text-green-500 mt-28 mb-8 mx-24'>List of Users</h1>";
 //And now to perform a simple query to make sure it's working
 $query = "SELECT * FROM users_tbl";
+
+
+
+
+// for deletion
+/* 
+// $query = "SELEC users_id, first_name, last_name, email, status FROM users_tbl WHERE status = 'A'";
+*/
+
+
 $result = mysqli_query($connection, $query);
 
 
-echo "<table class='table-auto border-gray-500 shadow-2 shadow-green-500'>
+
+
+
+echo "<table class='table-auto border-red-500 shadow-2 shadow-green-500'>
         <thead>
             <td class='center'>ID</td>
             <td>First Name</td>
@@ -57,5 +78,14 @@ echo "<table class='table-auto border-gray-500 shadow-2 shadow-green-500'>
 echo "</table>"; // close table
 
 ?>
+
+<script>
+  setTimeout(() => {
+
+    const msg = document.getElementById('flash-msg');
+
+    if (msg) msg.style.display = 'none';
+  }, 5000);
+</script>
 </body>
 </html>

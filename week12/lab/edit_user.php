@@ -1,13 +1,17 @@
-
-
 <?php 
 
 echo "<h1 class='text-6xl text-green-500 mt-28 mb-8 mx-24'>Edit Users</h1>";
 
 $users_id = $_GET['id'];
-// echo $users_id;
+
 
 require('../../dbconnect.php'); // use require because we want to force this to exist before running our queries
+
+
+
+
+// checkpoint testing
+// echo $users_id;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // check for the post
@@ -20,6 +24,7 @@ require('../../dbconnect.php'); // use require because we want to force this to 
         $email = $_POST['email'];
         $status = $_POST['status'];
 
+        // run a SQL UPDATE Query
         $update_query = "
             UPDATE users_tbl
             SET first_name = '$firstname',
@@ -29,22 +34,28 @@ require('../../dbconnect.php'); // use require because we want to force this to 
             WHERE users_id = '$userid'; 
         ";
 
+        // checkpoint testing
         // echo $update_query;
+        // exit('Testing')
 
-        // execute update query
+        // store & execute SQL UPDATE Query
         $update_result = mysqli_query($connection, $update_query);
 
         if ($update_result) {
-            // success
-            echo "Success";
-            // header("Location: list_users.php?msg=ok");
+            // success and redirect to another page
+            // echo "
+            //     <h4 class='bg-green-500 text-2xl '>User successfully updated!</h4>
+            //     <p><a href='list_users.php'>Return to List</a></p>
+            // ";
+
+            // alternative way to re-direct to another page
+            header("Location: list_users.php?msg=ok");
             exit;
             // echo "Record successfully edited"
         } else {
             // failure
             echo "Failed";
         }
-
 
     } else {
         // perform a query and fetch the columns to extract data
@@ -56,9 +67,6 @@ require('../../dbconnect.php'); // use require because we want to force this to 
 
 
     }
-    
-    
-    
 ?>
 
 <!DOCTYPE html>
