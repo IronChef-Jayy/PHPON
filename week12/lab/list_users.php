@@ -41,19 +41,12 @@ echo "<h1 class='text-6xl text-green-500 mt-28 mb-8 mx-24'>List of Users</h1>";
 //And now to perform a simple query to make sure it's working
 $query = "SELECT * FROM users_tbl";
 
-
-
-
 // for deletion
 /* 
 // $query = "SELEC users_id, first_name, last_name, email, status FROM users_tbl WHERE status = 'A'";
 */
 
-
 $result = mysqli_query($connection, $query);
-
-
-
 
 
 echo "<table class='table-auto border-red-500 shadow-2 shadow-green-500'>
@@ -66,6 +59,7 @@ echo "<table class='table-auto border-red-500 shadow-2 shadow-green-500'>
             <td>Edit</td>
         </thead>"; // open table and include table headings
 
+        // loop through rows and return data from database and display in table
         while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>
                 <td class='center'>" . $row['users_id'] . "</td>
