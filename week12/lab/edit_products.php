@@ -1,5 +1,7 @@
 <?php 
 
+include 'navigation.php';
+
 echo "<h1 class='text-6xl text-green-500 mt-28 mb-8 mx-24'>Edit Product</h1>";
 
 $product_id = $_GET['id'];
@@ -77,6 +79,8 @@ require('../../dbconnect.php'); // use require because we want to force this to 
     <title>Edit Users</title>
 </head>
 <body>
+
+
 
     <form action="edit_products.php" method="post">
         <p>Product ID : <input type="text" name="product-id" value="<?php echo $row['product_id']; ?>" readonly></p>
