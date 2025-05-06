@@ -2,7 +2,7 @@
 
 include 'navigation.php';
 
-echo "<h1 class='text-6xl text-green-500 mt-28 mb-8 mx-24'>Edit Product</h1>";
+echo "<h1 class='text-6xl text-indigo-500 mt-28 mb-8 mx-24'>Edit Product</h1>";
 
 $product_id = $_GET['id'];
 
@@ -84,13 +84,20 @@ require('../../dbconnect.php'); // use require because we want to force this to 
 
 
     <form action="edit_products.php" method="post">
-        <p>Product ID : <input type="text" name="product-id" value="<?php echo $row['product_id']; ?>" readonly></p>
-        <p>Name : <input type="text" name="product-name" value="<?php echo $row['product_name']; ?>"></p>
-        <p>Description : <textarea name="product-description"><?php echo $row['product_description']; ?></textarea></p>
-        <p>Price : <input type="text" name="product-price" value="<?php echo $row['product_price']; ?>"></p>
-        <p>Status : <input type="text" name="status" value="<?php echo $row['status']; ?>"></p>
+        <div class="flex flex-col gap-6 ml-16 mt-20">
+            <p>Product ID : <input type="text" name="product-id" class="border border-indigo-500 rounded p-1 w-96" value="<?php echo $row['product_id']; ?>" readonly></p>
 
-        <button type="submit">submit</button>
+            <p>Name : <input type="text" name="product-name" class="border border-indigo-500 rounded p-1 w-96" value="<?php echo $row['product_name']; ?>"></p>
+
+            <label for="product-description">Description:</label>
+            <textarea name="product-description" class="border border-indigo-500 rounded p-1 w-96 h-28"><?php echo $row['product_description']; ?></textarea>
+
+            <p>Price : <input type="text" name="product-price" class="border border-indigo-500 rounded p-1 w-28" value="<?php echo $row['product_price']; ?>"></p>
+
+            <p>Status : <input type="text" name="status" class="border border-indigo-500 rounded p-1 w-28" value="<?php echo $row['status']; ?>"></p>
+        </div>
+        <br />
+        <button type="submit" class="ml-16 mb-16 p-2 shadow-2 shadow-indigo-500 bg-indigo-500 rounded text-white text-center">Submit</button>
     </form>
     
 </body>
