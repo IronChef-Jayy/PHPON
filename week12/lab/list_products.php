@@ -22,8 +22,19 @@ text-align: center;
 <body>
 
 <div class="menu">
-  <?php include 'navigation.php' ?>
+  <?php 
+    include 'navigation.php';
+    include 'redirectMessages.php';
+
+    showProductRedirectMessage();
+  ?>
 </div>
+
+
+<!-- redirect completion message for edit_user.php -->
+
+
+
 
 <?php
 require('../../dbconnect.php');
@@ -57,5 +68,6 @@ echo "<table class='table-auto border-gray-500 shadow-2 shadow-indigo-500'>
 echo "</table>";
 
 ?>
+<script src="./scripts/flashRedirectMsg.js"></script>
 </body>
 </html>

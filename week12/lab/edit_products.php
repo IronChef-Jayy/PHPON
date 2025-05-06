@@ -81,7 +81,7 @@ require('../../dbconnect.php'); // use require because we want to force this to 
     <form action="edit_products.php" method="post">
         <p>Product ID : <input type="text" name="product-id" value="<?php echo $row['product_id']; ?>" readonly></p>
         <p>Name : <input type="text" name="product-name" value="<?php echo $row['product_name']; ?>"></p>
-        <p>Description : <input type="text" name="product-description" value="<?php echo $row['product_description']; ?>"></p>
+        <p>Description : <textarea name="product-description"><?php echo $row['product_description']; ?></textarea></p>
         <p>Price : <input type="text" name="product-price" value="<?php echo $row['product_price']; ?>"></p>
         <p>Status : <input type="text" name="status" value="<?php echo $row['status']; ?>"></p>
 
