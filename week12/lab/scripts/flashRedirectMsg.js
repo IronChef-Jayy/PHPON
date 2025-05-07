@@ -7,3 +7,4 @@ setTimeout(() => {
     }
 }, 5000);
 
+// set display conditionals using javascript not php because php is server-side
