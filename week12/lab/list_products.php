@@ -67,6 +67,49 @@ echo "<table class='table-auto border-gray-500 shadow-2 shadow-indigo-500'>
             }
 echo "</table>";
 
+
+/* MOVE ON TO THIS METHOD of displaying tabular data:
+
+// Starting echo statement
+echo "
+    <div class='text-indigo-500 ' >
+        <table>
+            <thead>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Description</td>
+                <td>Price</td>
+                <td>Status</td>
+                <td>Edit</td>
+            </thead>
+            <tbody>
+";
+
+// Jump out of echo statement - (While Loop has to breathe outside of echo statement)
+while ($row = mysqli_fetch_assoc($result)) {
+    // Curly Braces are a cleaner way to write without concatenation. Tells PHP to evaluate the array element within a string
+    // Concatenation is more flexible in complex cases
+    echo "
+        <tr>
+            <td> {$row['product_id']} </td>
+            <td> {$row['product_name']}</td>
+            <td> {$row['product_description']}</td>
+            <td> {$row['product_price']}</td>
+            <td> {$row['status']}</td>
+            <td><a href='edit_products.php?id={$row['product_id']}'>Edit</a></td>
+        </tr>
+    ";
+}
+
+// Jump back in echo statement to close the tags
+echo "
+        </tbody>
+    </table>
+</div>
+";
+
+*/
+
 ?>
 <script src="./scripts/flashRedirectMsg.js"></script>
 </body>

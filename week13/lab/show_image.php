@@ -7,12 +7,12 @@ $name = FALSE; // Flag variable:
 if (isset($_GET['image'])) {
 
 	// Make sure it has an image's extension:
-	$ext = strtolower ( substr ($_GET['image'], -4));
+	$ext = strtolower( substr ($_GET['image'], -4));
 
 	if (($ext == '.jpg') OR ($ext == 'jpeg') OR ($ext == '.png')) {
 
 		// Full image path:
-		$image = "{$_GET['image']}";
+		$image = "uploads/{$_GET['image']}";
 
 		// Check that the image exists and is a file:
 		if (file_exists($image) && (is_file($image))) {
@@ -28,7 +28,7 @@ if (isset($_GET['image'])) {
 
 // If there was a problem, use the default image:
 if (!$name) {
-	$image = 'images/unavailable.png';
+	$image = 'unavailable.png';
 	$name = 'unavailable.png';
 }
 
