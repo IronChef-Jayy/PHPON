@@ -2,7 +2,7 @@
 
 include 'navigation.php';
 
-echo "<h1 class='text-6xl text-indigo-500 mt-28 mb-8 mx-24'>Edit Product</h1>";
+echo "<h1 class='text-6xl text-center text-indigo-500 mt-28 mx-24'>Edit Product</h1>";
 
 $product_id = $_GET['id'];
 
@@ -51,7 +51,7 @@ require('../../dbconnect.php'); // use require because we want to force this to 
             // ";
 
             // alternative way to re-direct to another page
-            header("Location: list_products.php?msg=ok");
+            header("Location: list_productsgrid.php?msg=ok");
             exit;
             // echo "Record successfully edited"
         } else {
@@ -77,28 +77,38 @@ require('../../dbconnect.php'); // use require because we want to force this to 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Edit Users</title>
+    <title>Edit Product</title>
 </head>
 <body>
 
 
 
-    <form action="edit_products.php" method="post">
-        <div class="flex flex-col gap-6 ml-16 mt-20">
-            <p>Product ID : <input type="text" name="product-id" class="border border-indigo-500 rounded p-1 w-96" value="<?php echo $row['product_id']; ?>" readonly></p>
+    <form action="edit_products.php" method="post" class="">
+        <div class="border-indigo-500 shadow-lg shadow-indigo-100 rounded bg-indigo-100 max-w-fit mx-auto my-8 px-8 py-16 text-center">
+                <p class="text-xl mb-8">
+                    <strong>Name: </strong> 
+                    <input type="text" name="product-name" class="border-b-1 border-indigo-500 shadow-sm shadow-indigo-500 rounded p-1 w-80" value="<?php echo $row['product_name']; ?>"> 
+                
+                    <strong class="text-sm text-gray-600">Product ID: </strong>
+                    <input type="text" name="product-id" class="border-indigo-500 rounded shadow-sm shadow-indigo-500 p-1 w-8 text-center text-sm text-gray-600 font-bold" value="<?php echo $row['product_id']; ?>" readonly>
+                </p>
 
-            <p>Name : <input type="text" name="product-name" class="border border-indigo-500 rounded p-1 w-96" value="<?php echo $row['product_name']; ?>"></p>
 
-            <label for="product-description">Description:</label>
-            <textarea name="product-description" class="border border-indigo-500 rounded p-1 w-96 h-28"><?php echo $row['product_description']; ?></textarea>
+                <div class="flex flex-col gap-2">
+                    <label for="product-description"><strong class="text-xl">Description:</strong></label>
 
-            <p>Price : <input type="text" name="product-price" class="border border-indigo-500 rounded p-1 w-28" value="<?php echo $row['product_price']; ?>"></p>
+                    <textarea name="product-description" id="product-description" class="border-indigo-500 rounded shadow-sm shadow-indigo-500 p-1 w-96 h-36 text-xl mb-8 mx-auto"><?php echo $row['product_description']; ?></textarea>
+                </div>
+                
 
-            <p>Status : <input type="text" name="status" class="border border-indigo-500 rounded p-1 w-28" value="<?php echo $row['status']; ?>"></p>
+                <p class="text-xl mb-8"><strong>Price:</strong> $<input type="text" name="product-price" class="border-b-1 border-indigo-500 shadow-sm shadow-indigo-500 rounded p-1 w-12" value="<?php echo $row['product_price']; ?>"></p>
+
+                <p class="text-xl mb-8"><strong>Status:</strong> <input type="text" name="status" class="border-b-1 border-indigo-500 shadow-sm shadow-indigo-500 rounded p-1 w-28" value="<?php echo $row['status']; ?>"></p>
+
+                <br />
+                
+                <button type="submit" class="p-2 shadow-2 shadow-indigo-500 bg-indigo-500 rounded text-white text-center text-xl hover:bg-indigo-900 cursor-pointer ">Save Changes</button>
         </div>
-        <br />
-        <button type="submit" class="ml-16 mb-16 p-2 shadow-2 shadow-indigo-500 bg-indigo-500 rounded text-white text-center">Submit</button>
     </form>
-    
 </body>
 </html>

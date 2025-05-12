@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>List Products</title>
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<title>List Products</title>
+
 </head>
 <body class="bg-indigo-100">
 
@@ -36,7 +37,7 @@ echo "
 
 while ($row = mysqli_fetch_assoc($result)) {
     echo "
-        <div class='bg-white shadow-md shadow-indigo-200 rounded-lg p-6 h-full flex flex-col'>
+        <div class='bg-white shadow-md shadow-blue-200 rounded-lg p-6 h-full flex flex-col'>
 
             <h2 class='text-xl font-semibold mb-2'>{$row['product_name']}</h2>
 
