@@ -39,9 +39,6 @@
             case 'ok':
                 echo "<p class='bg-green-500 text-white p-2 rounded mb-4' id='flash-msg'>User Successfully Updated!</p>";
                 break;
-            case 'added':
-                echo "<p class='bg-blue-500 text-white p-2 rounded mb-4' id='flash-msg'>User Successfully Added!</p>";
-                break;
             case 'deleted':
                 echo "<p class='bg-red-500 text-white p-2 rounded mb-4' id='flash-msg'>User Successfully Deleted!</p>";
                 break;
