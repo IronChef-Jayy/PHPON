@@ -6,7 +6,7 @@
   <title>Add User</title>
   </head>
 
-  <body>
+  <body class="bg-green-100">
 
     <div class="menu">
       <?php include 'navigation.php' ?>
@@ -27,7 +27,7 @@
                 type="text" 
                 name="first-name" 
                 id="first-name" 
-                class="border border-green-500 rounded p-1 w-96" 
+                class="border border-green-500 bg-white rounded p-1 w-96" 
                 placeholder="First Name" 
                 value="<?php if (isset($_POST['first-name'])) { print htmlspecialchars($_POST['first-name']); } ?>"
               >
@@ -36,7 +36,7 @@
                 type="text" 
                 name="last-name" 
                 id="last-name" 
-                class="border border-green-500 rounded p-1 w-96" 
+                class="border border-green-500 bg-white rounded rounded p-1 w-96" 
                 placeholder="Last Name" 
                 value="<?php if (isset($_POST['last-name'])) { print htmlspecialchars($_POST['last-name']); } ?>"
               >
@@ -45,7 +45,7 @@
                 type="email" 
                 name="email" 
                 id="email" 
-                class="border border-green-500 rounded p-1 w-96" 
+                class="border border-green-500 bg-white rounded rounded p-1 w-96" 
                 placeholder="Email" value="<?php if (isset($_POST['email'])) { print htmlspecialchars($_POST['email']); } ?>"
               >
               
@@ -56,7 +56,7 @@
                 type="password" 
                 name="password" 
                 id="password" 
-                class="border border-green-500 rounded p-1 w-96" 
+                class="border border-green-500 bg-white rounded rounded p-1 w-96" 
                 placeholder="password"
               >
 
@@ -65,7 +65,7 @@
                 type="password" 
                 name="confirm-password" 
                 id="confirm-password" 
-                class="border border-green-500 rounded p-1 w-96" 
+                class="border border-green-500 bg-white rounded rounded p-1 w-96" 
                 placeholder="password"
               >
 
@@ -75,8 +75,8 @@
                 value="524288"
               >
 
-              <fieldset>
-                <legend>Select a JPEG or PNG image of 512KB or smaller to be uploaded:</legend>
+              <fieldset class="border border-green-500 p-4">
+                <legend> Select a JPEG or PNG image of 512KB or smaller to be uploaded: </legend>
 
                 <p>
                   <strong>File:</strong> 

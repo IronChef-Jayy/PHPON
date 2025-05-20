@@ -1,6 +1,6 @@
 <?php 
 
-echo "<h1 class='text-6xl text-green-500 mt-28 mb-8 mx-24'>Edit Users</h1>";
+echo "<h1 class='text-6xl text-green-500 mt-28 mb-8 text-center'>Edit Users</h1>";
 
 $users_id = $_GET['id'];
 
@@ -142,32 +142,41 @@ require('../../dbconnect.php'); // use require because we want to force this to 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Edit Users</title>
 </head>
 <body>
 
+
+
     <form enctype="multipart/form-data" action="edit_user.php" method="post">
-        <p>User ID : <input type="text" name="userid" value="<?php echo $row['users_id']; ?>" readonly></p>
-        <p>First Name : <input type="text" name="firstname" value="<?php echo $row['first_name']; ?>"></p>
-        <p>Last Name : <input type="text" name="lastname" value="<?php echo $row['last_name']; ?>"></p>
-        <p>Email : <input type="email" name="email" value="<?php echo $row['email']; ?>"></p>
-        <p>Status : <input type="text" name="status" value="<?php echo $row['status']; ?>"></p>
+
+        <div class="bg-green-100 w-136 p-8 mx-auto flex flex-col gap-4">
+            <p class="text-gray-400 font-bold cursor-default">User ID : <input type="text" name="userid" value="<?php echo $row['users_id']; ?>" readonly></p>
+            <p>First Name : <input type="text" name="firstname" class="border border-green-500 bg-white rounded p-1 w-96" value="<?php echo $row['first_name']; ?>"></p>
+            <p>Last Name : <input type="text" name="lastname" class="border border-green-500 bg-white rounded p-1 w-96" value="<?php echo $row['last_name']; ?>"></p>
+            <p>Email : <input type="email" name="email" class="border border-green-500 bg-white rounded p-1 w-96" value="<?php echo $row['email']; ?>"></p>
+            <p>Status : <input type="text" name="status" class="border border-green-500 bg-white rounded p-1 w-10 text-center" value="<?php echo $row['status']; ?>"></p>
+
+            
+            <img src='../lab/uploads/<?php echo $row["user_image"]; ?>' alt='Profile Image' class="mx-auto" width='200' height='200'>
+
+            <input type="hidden" name="MAX_FILE_SIZE" value="524288">
+
+            <fieldset class="border border-green-500 p-6">
+                <legend class="p-2"> Upload an image: MAX 512KB </legend>
+                <p>
+                    <strong>File:</strong> 
+                    <input type="file" name="upload" class="rounded-md shadow-sm shadow-gray-200 bg-gray-200 cursor-pointer">
+                </p>
+            </fieldset>
+
+
+            <button type="submit" class="border w-fit mx-auto p-2 shadow-2 shadow-green-500 bg-green-500 rounded text-white text-center cursor-pointer">Update</button>
+        </div>
+
 
         
-        <img src='../lab/uploads/<?php echo $row["user_image"]; ?>' alt='Profile Image' width='300' height='300'>
-
-        <input type="hidden" name="MAX_FILE_SIZE" value="524288">
-
-        <fieldset>
-            <legend>Select a JPEG or PNG image of 512KB or smaller to be uploaded:</legend>
-            <p>
-                <strong>File:</strong> 
-                <input type="file" name="upload" class="rounded-md shadow-sm shadow-gray-200 bg-gray-200 cursor-pointer">
-            </p>
-        </fieldset>
-
-
-        <button type="submit">Update</button>
     </form>
     
 </body>

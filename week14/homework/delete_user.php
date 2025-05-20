@@ -3,6 +3,7 @@
         require('../../dbconnect.php');
 
         if(isset($_GET['id'])) {
+            // intval for sanitation purposes
             $userId = intval($_GET['id']);
             $query = "UPDATE users_tbl SET status = 'I' WHERE users_id = $userId";
 
