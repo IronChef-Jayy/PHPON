@@ -2,7 +2,7 @@
 <html>
 <head>
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-<title>Orders</title>
+<title>List Orders</title>
 
 </head>
 <body class="bg-blue-100">
@@ -10,7 +10,7 @@
 <div class="menu">
   <?php 
     include 'navigation.php';
-    include 'redirectMessages.php';
+    // include 'redirectMessages.php';
     
   ?>
 </div>
@@ -19,8 +19,12 @@
 require('../../dbconnect.php'); // use require because we want to force this to exist before running our queries
 
 echo "<h1 class='text-6xl text-blue-500 mt-28 mb-8 mx-24'>List of Orders</h1>";
+
+// showRedirectMessage();
+
+
 //And now to perform a simple query to make sure it's working
-$query = "SELECT order_id, products_tbl.product_id, prod_name, product_price, users_id, first_name, last_name, email, product_image FROM users_tbl INNER JOIN orders_tbl ON users_tbl.users_id = orders_tbl.customer_id INNER JOIN products_tbl ON orders_tbl.product_id = products_tbl.product_id;";
+$query = "SELECT order_id, products_tbl.product_id, prod_name, product_price, users_id, first_name, last_name, email, product_image, user_image FROM users_tbl INNER JOIN orders_tbl ON users_tbl.users_id = orders_tbl.customer_id INNER JOIN products_tbl ON orders_tbl.product_id = products_tbl.product_id;";
 
 $result = mysqli_query($connection, $query);
 
@@ -32,22 +36,27 @@ echo "
 
 while ($row = mysqli_fetch_assoc($result)) {
     echo "
-        <div class='bg-white shadow-md shadow-blue-200 rounded-lg p-6 h-full flex flex-col'>
+        <div class='bg-white shadow-md shadow-green-200 rounded-lg p-6 h-full flex flex-col'>
 
-            <p class='text-sm text-gray-600 mb-2'><strong>Order ID:</strong> {$row['order_id']}</p>
+            <h2 class='text-center text-blue-500 text-3xl'>Order Information</h2>
+            <p class='text-sm text-gray-600 text-center mb-2'><strong>Order ID:</strong> {$row['order_id']}</p>
+
+            <hr />
 
 
             <p class='font-bold text-xl'>Product Information</p>
             <p class='text-sm text-gray-600 mb-2'><strong>Product ID:</strong> {$row['product_id']}</p>
             <img src='productphotos/{$row["product_image"]}' alt='Product Image' width='200' height='200'>
-            <h2 class='text-xl font-semibold mb-2'>{$row['prod_name']} <strong>Price:</strong> \${$row['product_price']}</h2>
+            <h2 class='text-xl font-semibold mb-2'>{$row['prod_name']}</h2>
+            <p><strong>Price:</strong> \${$row['product_price']}</p>
 
 
             <hr />
 
-            <p class='font-bold'>Customer Information:</p>
-            <p class='mb-2'><strong>{$row['first_name']} {$row['last_name']}</strong> </p>
+            <p class='font-bold text-xl'>Customer Information:</p>
             <p class='text-sm text-gray-600 mb-2'><strong>User ID:</strong> {$row['users_id']}</p>
+            <p class='mb-2'><strong>{$row['first_name']} {$row['last_name']}</strong> </p>
+            <img src='productphotos/{$row["user_image"]}' alt='Product Image' width='200' height='200'>
             <p class='mb-4'><strong>Email:</strong> {$row['email']}</p>
 
 
