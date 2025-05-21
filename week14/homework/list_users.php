@@ -67,7 +67,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <a href='edit_user.php?id={$row['users_id']}' class='mt-auto w-fit bg-green-500 text-white px-4 py-2 rounded hover:bg-green-900'>Edit</a>
 
                 <a href='delete_user.php?id={$row['users_id']}' 
-                onclick=\"return confirm('Are you sure you want to delete this user?');\"
+                onclick=\"return confirm('Are you sure you want to delete this product?');\"
                 class='mt-auto w-fit bg-red-500 text-white px-4 py-2 rounded hover:bg-red-900'>Delete</a>
             </div>
         </div>

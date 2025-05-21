@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+include 'navigation.php';
 
 echo "<h1 class='text-6xl text-green-500 mt-28 mb-8 text-center'>Edit Users</h1>";
 
@@ -151,12 +153,17 @@ require('../../dbconnect.php'); // use require because we want to force this to 
 
     <form enctype="multipart/form-data" action="edit_user.php" method="post">
 
-        <div class="bg-green-100 w-136 p-8 mx-auto flex flex-col gap-4">
-            <p class="text-gray-400 font-bold cursor-default">User ID : <input type="text" name="userid" value="<?php echo $row['users_id']; ?>" readonly></p>
-            <p>First Name : <input type="text" name="firstname" class="border border-green-500 bg-white rounded p-1 w-96" value="<?php echo $row['first_name']; ?>"></p>
-            <p>Last Name : <input type="text" name="lastname" class="border border-green-500 bg-white rounded p-1 w-96" value="<?php echo $row['last_name']; ?>"></p>
-            <p>Email : <input type="email" name="email" class="border border-green-500 bg-white rounded p-1 w-96" value="<?php echo $row['email']; ?>"></p>
-            <p>Status : <input type="text" name="status" class="border border-green-500 bg-white rounded p-1 w-10 text-center" value="<?php echo $row['status']; ?>"></p>
+        <div class="bg-green-100 shadow-lg shadow-green-100 rounded w-156 p-8 mx-auto flex flex-col gap-4">
+
+            <p class="text-gray-400 font-bold cursor-default">User ID : <input type="text" name="userid" class="border-green-500 rounded shadow-sm shadow-green-500 p-1 w-8 text-center text-sm text-gray-600 font-bold cursor-default" value="<?php echo $row['users_id']; ?>" readonly></p>
+
+            <p class="text-xl">First Name : <input type="text" name="firstname" class="border border-green-500 bg-white rounded p-1 w-96" value="<?php echo $row['first_name']; ?>"></p>
+
+            <p class="text-xl">Last Name : <input type="text" name="lastname" class="border border-green-500 bg-white rounded p-1 w-96" value="<?php echo $row['last_name']; ?>"></p>
+
+            <p class="text-xl">Email : <input type="email" name="email" class="border border-green-500 bg-white rounded p-1 w-96" value="<?php echo $row['email']; ?>"></p>
+            
+            <p class="text-xl">Status : <input type="text" name="status" class="border border-green-500 bg-white rounded p-1 w-10 text-center" value="<?php echo $row['status']; ?>"></p>
 
             
             <img src='../lab/uploads/<?php echo $row["user_image"]; ?>' alt='Profile Image' class="mx-auto" width='200' height='200'>
@@ -164,7 +171,7 @@ require('../../dbconnect.php'); // use require because we want to force this to 
             <input type="hidden" name="MAX_FILE_SIZE" value="524288">
 
             <fieldset class="border border-green-500 p-6">
-                <legend class="p-2"> Upload an image: MAX 512KB </legend>
+                <legend class="p-2"> Upload an image: MAX SIZE 512KB </legend>
                 <p>
                     <strong>File:</strong> 
                     <input type="file" name="upload" class="rounded-md shadow-sm shadow-gray-200 bg-gray-200 cursor-pointer">
@@ -172,7 +179,7 @@ require('../../dbconnect.php'); // use require because we want to force this to 
             </fieldset>
 
 
-            <button type="submit" class="border w-fit mx-auto p-2 shadow-2 shadow-green-500 bg-green-500 rounded text-white text-center cursor-pointer">Update</button>
+            <button type="submit" class="border w-fit mx-auto p-2 shadow-2 shadow-green-500 bg-green-500 rounded text-white text-xl text-center hover:bg-green-900 cursor-pointer">Update</button>
         </div>
 
 

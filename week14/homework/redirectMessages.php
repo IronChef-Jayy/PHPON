@@ -45,7 +45,9 @@
             case 'product_updated':
                 echo "<p class='bg-green-500 text-white p-2 rounded mb-4' id='flash-msg'>Product Successfully Updated!</p>";
                 break;
-            // Add more cases as needed
+            case 'product_deleted':
+                echo "<p class='bg-red-500 text-white p-2 rounded mb-4' id='flash-msg'>Product Successfully Deleted!</p>";
+                break;
             default:
                 // No message shown
                 break;

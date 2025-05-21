@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <meta charset="utf-8">
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <title>Add User</title>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Add User</title>
   </head>
 
   <body class="bg-green-100">
@@ -49,7 +49,7 @@
                 placeholder="Email" value="<?php if (isset($_POST['email'])) { print htmlspecialchars($_POST['email']); } ?>"
               >
               
-              <hr class="text-yellow-500" >
+              <hr class="text-yellow-500 w-156" >
       
               <p>Enter a Password:</p>
               <input 
@@ -75,7 +75,7 @@
                 value="524288"
               >
 
-              <fieldset class="border border-green-500 p-4">
+              <fieldset class="border border-green-500 p-4 w-156">
                 <legend> Select a JPEG or PNG image of 512KB or smaller to be uploaded: </legend>
 
                 <p>
@@ -216,7 +216,7 @@
                   $_POST = [];
 
                 } else { // Forgot a field.
-                print '<p><span class="form-error">Please try again!</span></p>';   
+                  print '<p><span class="form-error">Please try again!</span></p>';   
                 }
 
               } // End of the submitted conditional.
