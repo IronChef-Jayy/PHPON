@@ -55,7 +55,7 @@ function check_login($dbc, $email = '', $password = '') {
 		// $q = "SELECT user_id, first_name FROM users WHERE email='$e' AND pass=SHA2('$p', 512)";
 
         // without hashed password
-        $q = "SELECT users_id, first_name, user_role FROM users_tbl WHERE email='$e' AND password='$p'";
+        $q = "SELECT users_id, first_name, user_role FROM users_tbl WHERE email='$e' AND password='$p' AND status='A'";
 		$r = @mysqli_query($dbc, $q); // Run the query.
 
 		// Check the result:

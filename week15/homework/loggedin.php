@@ -53,7 +53,7 @@ echo "
   <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 m-28'>
   <div class='bg-white shadow-md shadow-indigo-200 rounded-lg p-6 h-full flex flex-col'>
 
-            <img src='../lab/uploads/{$data["user_image"]}' alt='Profile Image' width='300' height='300'>
+            <img src='user_uploads/{$data["user_image"]}' alt='Profile Image' width='300' height='300'>
 
             <h2 class='text-xl font-semibold mb-2'>{$data['first_name']} {$data['last_name']}</h2>
 

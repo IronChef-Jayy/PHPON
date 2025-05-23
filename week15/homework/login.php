@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$_SESSION['users_id'] = $data['users_id'];
 		$_SESSION['first_name'] = $data['first_name'];
 		$_SESSION['user_role'] = $data['user_role'];
+		
 
 		// Store the HTTP_USER_AGENT:
 		$_SESSION['agent'] = sha1($_SERVER['HTTP_USER_AGENT']);
