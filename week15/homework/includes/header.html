@@ -5,19 +5,19 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php echo $page_title; ?></title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link href="css/sticky-footer-navbar.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 	</head>
 
 	<body>
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
+		<nav class="bg-white shadow-md fixed top-0 w-full z-50">
+			<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+				<div class="text-xl font-semibold text-gray-800">
 					<a class="navbar-brand" href="#">Your Website</a>
 				</div>
 
-				<div id="navbar" class="collapse navbar-collapse">
-					<ul class="nav navbar-nav">
+				<div id="navbar" class="space-x-6">
+					<ul class="flex space-x-4 text-gray-700 font-medium">
 
 						<li class="active">
 							<?php // Create a view users link for admin:
@@ -32,13 +32,13 @@
 						</li>
 
 						<li>
-							<a href="list_products.php">Products</a>
+							<a href="list_products.php" class="hover:text-blue-600">Products</a>
 						</li>
 
 						<li>
 							<?php // Create a view users link for admin:
 								if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
-									echo '<a href="list_users.php">View Users</a>';
+									echo '<a href="list_users.php" class="hover:text-green-600">View Users</a>';
 								}
 							?>
 						</li>
@@ -46,7 +46,7 @@
 						<li>
 							<?php // Create a view orders link for admin:
 								if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
-									echo '<a href="list_orders.php">View Orders</a>';
+									echo '<a href="list_orders.php" class="hover:text-indigo-600">View Orders</a>';
 								}
 							?>
 						</li>

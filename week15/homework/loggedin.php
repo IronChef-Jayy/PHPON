@@ -2,7 +2,6 @@
 
 <?php # Script 12.13 - loggedin.php #3
 // The user is redirected here from login.php.
-
 session_start(); // Start the session.
 
 // If no session value is present, redirect the user:
@@ -69,7 +68,7 @@ echo "
                 <a href='edit_user.php?id={$data['users_id']}' class='mt-auto w-fit bg-green-500 text-white px-4 py-2 rounded hover:bg-green-900'>Edit</a>
 
                 <a href='delete_user.php?id={$data['users_id']}' 
-                onclick=\"return confirm('Are you sure you want to delete this product?');\"
+                onclick=\"return confirm('Are you sure you want to delete your account?');\"
                 class='mt-auto w-fit bg-red-500 text-white px-4 py-2 rounded hover:bg-red-900'>Delete</a>
             </div>
         </div>

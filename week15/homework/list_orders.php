@@ -8,8 +8,9 @@
 <body class="bg-blue-100">
     
 <div class="menu">
-  <?php 
-    // include('includes/header.html');
+  <?php
+    session_start(); // Start the session.
+    include('includes/header.html');
     // include 'navigation.php';
     // include 'redirectMessages.php';
     
@@ -78,7 +79,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 echo "</div>";
 
-
+include 'includes/footer.html';
 ?>
 <!-- <script src="./scripts/flashRedirectMsg.js"></script> -->
 </body>

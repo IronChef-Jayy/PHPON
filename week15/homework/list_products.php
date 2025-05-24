@@ -9,11 +9,11 @@
 
 <div class="menu">
   <?php 
-    session_start();
-    
+    session_start(); // Start the session.
+    include 'includes/header.html';
     // include 'navigation.php';
     // include 'redirectMessages.php';
-
+    
   ?>
 </div>
 
@@ -94,7 +94,7 @@ echo "</div>";
 
 
     
-
+include 'includes/footer.html';
 ?>
 <script src="./scripts/flashRedirectMsg.js"></script>
 </body>

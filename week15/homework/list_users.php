@@ -11,6 +11,8 @@
 
 <div class="menu">
   <?php 
+    session_start(); // Start the session.
+    include 'includes/header.html';
     // include 'navigation.php';
     // include 'redirectMessages.php';
     
@@ -22,7 +24,8 @@
 
 
 
-<?php 
+<?php
+session_start(); // Start the session.
 require('../mysqli_connect.php'); // use require because we want to force this to exist before running our queries
 
 echo "<h1 class='text-6xl text-green-500 mt-28 mb-8 mx-24'>List of Users</h1>";
@@ -53,7 +56,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo "
         <div class='bg-white shadow-md shadow-indigo-200 rounded-lg p-6 h-full flex flex-col'>
 
-            <img src='../lab/uploads/{$row["user_image"]}' alt='Profile Image' width='300' height='300'>
+            <img src='user_uploads/{$row["user_image"]}' alt='Profile Image' width='300' height='300'>
 
             <h2 class='text-xl font-semibold mb-2'>{$row['first_name']} {$row['last_name']}</h2>
 
@@ -77,6 +80,8 @@ while ($row = mysqli_fetch_assoc($result)) {
 echo "</div>";
 
 
+
+include 'includes/footer.html';
 ?>
 
 <!-- <script src="./scripts/flashRedirectMsg.js"></script> -->

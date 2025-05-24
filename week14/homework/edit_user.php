@@ -117,7 +117,7 @@ require('../../dbconnect.php'); // use require because we want to force this to 
                 // ";
 
                 // alternative way to re-direct to another page
-                header("Location: list_users.php?msg=ok");
+                header("Location: list_users.php?msg=new_user");
                 exit;
                 // echo "Record successfully edited"
             } else {

@@ -83,7 +83,7 @@
                                     if (in_array($_FILES['upload']['type'], $allowed)) {
 
                                         // Move the file over to new location. will give temp name until moved into files
-                                        if (move_uploaded_file ($_FILES['upload']['tmp_name'], "productphotos/{$_FILES['upload']['name']}")) {
+                                        if (move_uploaded_file ($_FILES['upload']['tmp_name'], "user_uploads/{$_FILES['upload']['name']}")) {
                                             $image_name = $_FILES['upload']['name'];
                             
                                         }// End of move... IF.

@@ -13,8 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// Check the login:
 	list ($check, $data) = check_login($dbc, $_POST['email'], $_POST['password']);
 
-	if ($check) { // OK!
-
+	if ($check) {// OK!
 		// Set the session data:
 		session_start();
 		$_SESSION['users_id'] = $data['users_id'];
