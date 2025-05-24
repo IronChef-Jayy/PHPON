@@ -32,7 +32,7 @@
 						</li>
 
 						<li>
-							<a href="list_products.php" class="hover:text-blue-600">Products</a>
+							<a href="list_products.php" class="hover:text-indigo-600">Products</a>
 						</li>
 
 						<li>
@@ -46,7 +46,7 @@
 						<li>
 							<?php // Create a view orders link for admin:
 								if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
-									echo '<a href="list_orders.php" class="hover:text-indigo-600">View Orders</a>';
+									echo '<a href="list_orders.php" class="hover:text-blue-600">View Orders</a>';
 								}
 							?>
 						</li>
@@ -54,7 +54,7 @@
 						<li>
 							<?php // create register/add user link for customer:
 								if (!isset($_SESSION['user_role'])) {
-									echo '<a href="add_user.php">Register</a>';
+									echo '<a href="register.php">Register</a>';
 								}
 							?>
 						</li>

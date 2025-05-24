@@ -1,30 +1,32 @@
+<?php
+ob_start(); // begins output buffering, so any output (like echoed content or headers) is stored in memory until the script ends or until you call ob_end_flush(). ob_end_flush() sends the buffered output to the browser.
+session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Add User</title>
+    <title>Register User</title>
   </head>
 
   <body class="bg-green-100">
 
     <div class="menu">
-      <?php 
-        session_start(); // Start the session.
-        include 'includes/header.html';
-        // include 'navigation.php';
-        // include 'redirectMessages.php';
-        
-      ?>
+        <?php 
+            include('includes/header.html');
+            // include 'navigation.php' 
+        ?>
     </div>
+
 
     <main>
       <section>
         <article>
-          <h1 class="text-6xl text-green-500 mt-28 mb-8 mx-28">Add User</h1>
+          <h1 class="text-6xl text-green-500 mt-28 mb-8 mx-28">Register User</h1>
 
 
-          <form enctype="multipart/form-data" action="add_user.php" method="post">
+          <form enctype="multipart/form-data" action="register.php" method="post">
 
             <div class="flex flex-col gap-6 ml-16 mt-12">
 
@@ -103,7 +105,6 @@
 
 
             <?php
-
               $image_name = "";
 
               // Check if the form has been submitted:
@@ -205,25 +206,56 @@
                   $password = $_POST['password'];
 
                   require('../mysqli_connect.php');
-                  
+                  require('includes/login_functions.inc.php');
 
+                  
+                  
                   $sql = "INSERT INTO users_tbl (first_name, last_name, email, user_image, password)
                   VALUES ('" . $firstname . "','" . $lastname . "','" . $email . "','" . $image_name . "','" . $password . "')";
 
+
                   if (mysqli_query($dbc, $sql)) {
-                    echo '<p id="flash-msg"><span class="form-success text-green-500 text-2xl text-bold ml-16">' . $firstname . ' ' . $lastname . ' was added as a New User!</span></p>';
+
+                    list($check, $data) = check_login($dbc, $email, $password);
+
+                    if ($check) {
+                        // Login success — set session variables
+                        $_SESSION['users_id'] = $data['users_id'];
+                        $_SESSION['first_name'] = $data['first_name'];
+                        $_SESSION['user_role'] = $data['user_role']; // Important for permission checks!
+
+                        // Store the HTTP_USER_AGENT:
+		                    $_SESSION['agent'] = sha1($_SERVER['HTTP_USER_AGENT']);
+
+                        // Redirect to the main page
+                        redirect_user('loggedin.php');
+                        exit;
+                    } else {
+                        // Login failed — $data contains errors
+                        $errors = $data;
+                    }
+
+                    // // Redirect to loggedin.php
+                    // redirect_user("Location: loggedin.php");
+                    // exit; // Always call exit after header redirect
+                    // // echo '<p id="flash-msg"><span class="form-success text-green-500 text-2xl text-bold ml-16">' . $firstname . ' ' . $lastname . ' was added as a New User!</span></p>';
+
                   } else {
                     echo "Error: " . $sql . "<br>" . mysqli_error($dbc);
                   }
 
-                  mysqli_close($dbc);   
-
+                  mysqli_close($dbc);
                   // Clear the posted values:
-                  $_POST = [];
+                    $_POST = [];
+   
 
+                 
                 } else { // Forgot a field.
                   print '<p><span class="form-error">Please try again!</span></p>';   
                 }
+
+                 
+              
 
               } // End of the submitted conditional.
 
@@ -232,6 +264,8 @@
         </article>
       </section>
     </main>
+    <?php include('includes/footer.html'); ?>
     <!-- <script src="./scripts/flashRedirectMsg.js"></script> -->
   </body>
 </html>
+<?php ob_end_flush(); ?>

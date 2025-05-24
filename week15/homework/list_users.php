@@ -44,6 +44,18 @@ $query = "SELECT * FROM users_tbl";
 
 $result = mysqli_query($dbc, $query);
 
+if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
+  echo "
+
+    <div class='flex justify-center'>
+      <a 
+        href='add_user.php'
+        class='w-56 bg-green-500 text-xl text-white text-center px-4 py-2 rounded hover:bg-green-900'> Add a User
+      </a>
+    </div>
+    
+  ";
+}
 
 
 
