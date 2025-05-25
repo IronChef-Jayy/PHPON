@@ -37,7 +37,7 @@
 
 						<li>
 							<?php // Create a view users link for admin:
-								if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
+								if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' || $_SESSION['user_role'] == 'employee')) {
 									echo '<a href="list_users.php" class="hover:text-green-600">View Users</a>';
 								}
 							?>
@@ -45,7 +45,7 @@
 
 						<li>
 							<?php // Create a view orders link for admin:
-								if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
+								if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' || $_SESSION['user_role'] == 'employee')) {
 									echo '<a href="list_orders.php" class="hover:text-blue-600">View Orders</a>';
 								}
 							?>

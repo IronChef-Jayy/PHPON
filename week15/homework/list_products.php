@@ -40,7 +40,7 @@ echo "
 ";
 
 while ($row = mysqli_fetch_assoc($result)) {
-    if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
+    if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' || $_SESSION['user_role'] == 'employee')) {
 	echo "
         <div class='bg-white shadow-md shadow-blue-200 rounded-lg p-6 h-full flex flex-col'>
 

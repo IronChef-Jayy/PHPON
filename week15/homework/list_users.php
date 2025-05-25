@@ -65,6 +65,7 @@ echo "
 ";
 
 while ($row = mysqli_fetch_assoc($result)) {
+  if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
     echo "
         <div class='bg-white shadow-md shadow-indigo-200 rounded-lg p-6 h-full flex flex-col'>
 
@@ -87,7 +88,24 @@ while ($row = mysqli_fetch_assoc($result)) {
             </div>
         </div>
     ";
-}
+  } else {
+    echo "
+        <div class='bg-white shadow-md shadow-indigo-200 rounded-lg p-6 h-full flex flex-col'>
+
+            <img src='user_uploads/{$row["user_image"]}' alt='Profile Image' width='300' height='300'>
+
+            <h2 class='text-xl font-semibold mb-2'>{$row['first_name']} {$row['last_name']}</h2>
+
+            <p class='text-sm text-gray-600 mb-2'><strong>ID:</strong> {$row['users_id']}</p>
+
+            <p class='mb-2'><strong>Email:</strong> {$row['email']}</p>
+
+            <p class='mb-4'><strong>Status:</strong> {$row['status']}</p>
+
+        </div>
+    ";
+  }
+} 
 
 echo "</div>";
 

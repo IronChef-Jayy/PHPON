@@ -25,6 +25,7 @@ echo "<h1 class='text-6xl text-blue-500 mt-28 mb-8 mx-24'>List of Orders</h1>";
 // showRedirectMessage();
 
 
+
 //And now to perform a simple query to make sure it's working
 $query = "SELECT order_id, products_tbl.product_id, prod_name, product_price, users_id, first_name, last_name, email, product_image, user_image FROM users_tbl INNER JOIN orders_tbl ON users_tbl.users_id = orders_tbl.customer_id INNER JOIN products_tbl ON orders_tbl.product_id = products_tbl.product_id;";
 
@@ -37,6 +38,7 @@ echo "
 ";
 
 while ($row = mysqli_fetch_assoc($result)) {
+  if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
     echo "
         <div class='bg-white shadow-md shadow-green-200 rounded-lg p-6 h-full flex flex-col'>
 
@@ -75,6 +77,34 @@ while ($row = mysqli_fetch_assoc($result)) {
 
         </div>
     ";
+  } else {
+    echo "
+        <div class='bg-white shadow-md shadow-green-200 rounded-lg p-6 h-full flex flex-col'>
+
+            <h2 class='text-center text-blue-500 text-3xl'>Order Information</h2>
+            <p class='text-sm text-gray-600 text-center mb-2'><strong>Order ID:</strong> {$row['order_id']}</p>
+
+            <hr />
+
+
+            <p class='font-bold text-xl'>Product Information</p>
+            <p class='text-sm text-gray-600 mb-2'><strong>Product ID:</strong> {$row['product_id']}</p>
+            <img src='productphotos/{$row["product_image"]}' alt='Product Image' width='200' height='200'>
+            <h2 class='text-xl font-semibold mb-2'>{$row['prod_name']}</h2>
+            <p><strong>Price:</strong> \${$row['product_price']}</p>
+
+
+            <hr />
+
+            <p class='font-bold text-xl'>Customer Information:</p>
+            <p class='text-sm text-gray-600 mb-2'><strong>User ID:</strong> {$row['users_id']}</p>
+            <p class='mb-2'><strong>{$row['first_name']} {$row['last_name']}</strong> </p>
+            <img src='user_uploads/{$row["user_image"]}' alt='User Image' width='200' height='200'>
+            <p class='mb-4'><strong>Email:</strong> {$row['email']}</p>
+
+        </div>
+    ";
+  }
 }
 
 echo "</div>";
