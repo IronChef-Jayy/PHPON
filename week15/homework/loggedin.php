@@ -105,7 +105,7 @@ if (mysqli_num_rows($order_result) > 0) {
 
             <p class='font-bold text-xl'>Product Information</p>
             <p class='text-sm text-gray-600 mb-2'><strong>Product ID:</strong> {$order['product_id']}</p>
-            <img src='productphotos/{$order["product_image"]}' alt='Product Image' width='200' height='200'>
+            <img src='product_uploads/{$order["product_image"]}' alt='Product Image' width='200' height='200'>
             <h2 class='text-xl font-semibold mb-2'>{$order['prod_name']}</h2>
             <p><strong>Price:</strong> \${$order['product_price']}</p>
 

@@ -33,6 +33,19 @@ echo "<h1 class='text-6xl text-indigo-500 mt-28 mb-8 mx-24'>List of Products</h1
 $query = "SELECT * FROM products_tbl";
 $result = mysqli_query($dbc, $query);
 
+if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' || $_SESSION['user_role'] == 'employee')) {
+  echo "
+
+    <div class='flex justify-center'>
+      <a 
+        href='add_product.php'
+        class='w-56 bg-indigo-500 text-xl text-white text-center px-4 py-2 rounded hover:bg-indigo-900'> Add a Product
+      </a>
+    </div>
+    
+  ";
+}
+
 
 // table customized to use card-similar style
 echo "
@@ -44,7 +57,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 	echo "
         <div class='bg-white shadow-md shadow-blue-200 rounded-lg p-6 h-full flex flex-col'>
 
-            <img src='productphotos/{$row["product_image"]}' alt='Product Image' width='300' height='300'>
+            <img src='product_uploads/{$row["product_image"]}' alt='Product Image' width='300' height='300'>
 
             <h2 class='text-xl font-semibold mb-2'>{$row['product_name']}</h2>
 

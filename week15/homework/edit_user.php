@@ -1,6 +1,7 @@
 <?php
-
+session_start();
 // include 'navigation.php';
+include('includes/header.html');
 
 echo "<h1 class='text-6xl text-green-500 mt-28 mb-8 text-center'>Edit Users</h1>";
 
@@ -116,10 +117,16 @@ require('../mysqli_connect.php'); // use require because we want to force this t
                 //     <p><a href='list_users.php'>Return to List</a></p>
                 // ";
 
-                // alternative way to re-direct to another page
-                header("Location: loggedin.php?msg=ok");
-                exit;
-                // echo "Record successfully edited"
+                if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
+                    header("Location: list_users.php?msg=user_updated");
+                    exit;
+                } else {
+                    // alternative way to re-direct to another page
+                    header("Location: loggedin.php?msg=ok");
+                    exit;
+                    // echo "Record successfully edited"
+                }
+                
             } else {
                 // failure
                 echo "Failed";
@@ -185,6 +192,8 @@ require('../mysqli_connect.php'); // use require because we want to force this t
 
         
     </form>
-    
+<?php
+    include 'includes/footer.html';
+?>
 </body>
 </html>
