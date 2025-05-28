@@ -11,7 +11,8 @@
         <div class="menu">
             <?php
                 session_start();
-                include 'includes/header.html' 
+                include 'includes/header.html';
+                // include 'redirectMessages.php';
             ?>
         </div>
 
@@ -170,7 +171,7 @@
                                     VALUES ('" . $productName . "','" . $productDescription . "','" . $productPrice . "','" . $image_name . "')";
 
                                     if (mysqli_query($dbc, $sql)) {
-                                    echo '<p id="flash-msg"><span class="form-success text-indigo-500 text-2xl text-bold ml-16">' . $productName . ' added as a new product.</span></p>';
+                                    echo '<p id="flash-msg"><span class="form-success text-green-500 text-2xl text-bold ml-16">' . $productName . ' added as a new product.</span></p>';
                                     } else {
                                     echo "Error: " . $sql . "<br>" . mysqli_error($dbc);
                                     }
@@ -185,12 +186,11 @@
                                 }
 
                             } // End of handle form IF.
-
                         ?>
                     </form>
                 </article>
             </section>
         </main>
-        <!-- <script src="./scripts/flashRedirectMsg.js"></script> -->
+        <script src="./scripts/flashRedirectMsg.js"></script>
     </body>
 </html>

@@ -21,7 +21,7 @@ require('../../dbconnect.php'); // use require because we want to force this to 
 
 echo "<h1>List of Website Orders</h1>";
 //And now to perform a simple query to make sure it's working
-$query = "SELECT * FROM order_tbl";
+$query = "SELECT * FROM orders_tbl";
 $result = mysqli_query($connection, $query);
 
 
@@ -40,7 +40,7 @@ echo "
                 <td class='center'>" . $row['order_id'] . "</td>
                 <td> " . $row['product_id'] . "</td>
                 <td>" . $row['prod_name'] . "</td>
-                <td> " . $row['users_id'] . "</td>
+                <td> " . $row['customer_id'] . "</td>
             </tr
         >";
         }

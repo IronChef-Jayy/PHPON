@@ -168,7 +168,7 @@ require('../mysqli_connect.php'); // use require because we want to force this t
                 <input type="text" name="product-id" class="border-indigo-500 rounded shadow-sm shadow-indigo-500 p-1 w-8 text-center text-sm text-gray-600 font-bold cursor-default" value="<?php echo $row['product_id']; ?>" readonly>
             </p>
 
-            <img src='productphotos/<?php echo $row["product_image"]; ?>' alt='Product Image' class="mx-auto" width='200' height='200'>
+            <img src='product_uploads/<?php echo $row["product_image"]; ?>' alt='Product Image' class="mx-auto" width='200' height='200'>
 
             <input type="hidden" name="MAX_FILE_SIZE" value="524288">
 

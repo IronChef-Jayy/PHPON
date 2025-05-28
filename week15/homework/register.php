@@ -265,7 +265,7 @@ session_start();
       </section>
     </main>
     <?php include('includes/footer.html'); ?>
-    <!-- <script src="./scripts/flashRedirectMsg.js"></script> -->
+    <script src="./scripts/flashRedirectMsg.js"></script>
   </body>
 </html>
 <?php ob_end_flush(); ?>

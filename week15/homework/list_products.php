@@ -12,7 +12,7 @@
     session_start(); // Start the session.
     include 'includes/header.html';
     // include 'navigation.php';
-    // include 'redirectMessages.php';
+    include 'redirectMessages.php';
     
   ?>
 </div>
@@ -26,9 +26,10 @@
 
 require('../mysqli_connect.php');
 
+
 echo "<h1 class='text-6xl text-indigo-500 mt-28 mb-8 mx-24'>List of Products</h1>";
 
-// showRedirectMessage();
+showRedirectMessage();
 
 $query = "SELECT * FROM products_tbl";
 $result = mysqli_query($dbc, $query);
@@ -86,7 +87,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo "
         <div class='bg-white shadow-md shadow-blue-200 rounded-lg p-6 h-full flex flex-col'>
 
-            <img src='productphotos/{$row["product_image"]}' alt='Product Image' width='300' height='300'>
+            <img src='product_uploads/{$row["product_image"]}' alt='Product Image' width='300' height='300'>
 
             <h2 class='text-xl font-semibold mb-2'>{$row['product_name']}</h2>
 

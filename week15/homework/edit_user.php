@@ -122,7 +122,7 @@ require('../mysqli_connect.php'); // use require because we want to force this t
                     exit;
                 } else {
                     // alternative way to re-direct to another page
-                    header("Location: loggedin.php?msg=ok");
+                    header("Location: loggedin.php?msg=user_updated");
                     exit;
                     // echo "Record successfully edited"
                 }

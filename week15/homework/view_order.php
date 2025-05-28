@@ -55,16 +55,16 @@ if (mysqli_num_rows($result) > 0) {
                 <hr />
 
 
-                <p class='font-bold text-xl'>Product Information</p>
+                <p class='mt-4 font-bold text-xl text-indigo-500'>Product Information</p>
                 <p class='text-sm text-gray-600 mb-2'><strong>Product ID:</strong> {$order['product_id']}</p>
                 <img src='product_uploads/{$order["product_image"]}' alt='Product Image' width='200' height='200'>
                 <h2 class='text-xl font-semibold mb-2'>{$order['prod_name']}</h2>
-                <p><strong>Price:</strong> \${$order['product_price']}</p>
+                <p class='mb-4'><strong>Price:</strong> \${$order['product_price']}</p>
 
 
                 <hr />
 
-                <p class='font-bold text-xl'>Customer Information:</p>
+                <p class='mt-4 font-bold text-xl text-green-500'>Customer Information:</p>
                 <p class='text-sm text-gray-600 mb-2'><strong>User ID:</strong> {$order['users_id']}</p>
                 <p class='mb-2'><strong>{$order['first_name']} {$order['last_name']}</strong> </p>
                 <img src='user_uploads/{$order["user_image"]}' alt='User Image' width='200' height='200'>
@@ -74,7 +74,7 @@ if (mysqli_num_rows($result) > 0) {
         }
         echo "</div>";
     } else {
-        echo "<p>You have no orders.</p>";
+        echo "<p class='text-xl font-semibold ml-8'>You have no orders.</p>";
     }
 
 

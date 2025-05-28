@@ -1,0 +1,23 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Swanky+and+Moo+Moo&display=swap');
+
+@theme {
+    --font-main: "Swanky and Moo Moo", sans-serif;
+}
+
+
+span
+{
+    /*color: #66e0ff*/
+    /*color: #4ddbff*/
+    color: #feaae8;
+    background-color: #53dbff;
+    font-family: 'Swanky and Moo Moo', cursive;
+    
+}
+
+.page-header h1
+{
+    color:#feaae8;
+    font-family: 'Swanky and Moo Moo', cursive;
+}

@@ -13,7 +13,7 @@
         session_start(); // Start the session.
         include 'includes/header.html';
         // include 'navigation.php';
-        // include 'redirectMessages.php';
+        include 'redirectMessages.php';
         
       ?>
     </div>
@@ -232,6 +232,6 @@
         </article>
       </section>
     </main>
-    <!-- <script src="./scripts/flashRedirectMsg.js"></script> -->
+    <script src="./scripts/flashRedirectMsg.js"></script>
   </body>
 </html>

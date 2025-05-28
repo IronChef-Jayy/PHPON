@@ -48,19 +48,19 @@ while ($row = mysqli_fetch_assoc($result)) {
             <hr />
 
 
-            <p class='font-bold text-xl'>Product Information</p>
+            <p class='mt-4 font-bold text-xl text-indigo-500'>Product Information</p>
             <p class='text-sm text-gray-600 mb-2'><strong>Product ID:</strong> {$row['product_id']}</p>
-            <img src='productphotos/{$row["product_image"]}' alt='Product Image' width='200' height='200'>
+            <img src='product_uploads/{$row["product_image"]}' alt='Product Image' width='200' height='200'>
             <h2 class='text-xl font-semibold mb-2'>{$row['prod_name']}</h2>
-            <p><strong>Price:</strong> \${$row['product_price']}</p>
+            <p class='mb-4'><strong>Price:</strong> \${$row['product_price']}</p>
 
 
             <hr />
 
-            <p class='font-bold text-xl'>Customer Information:</p>
+            <p class='mt-4 font-bold text-xl text-green-500'>Customer Information:</p>
             <p class='text-sm text-gray-600 mb-2'><strong>User ID:</strong> {$row['users_id']}</p>
             <p class='mb-2'><strong>{$row['first_name']} {$row['last_name']}</strong> </p>
-            <img src='productphotos/{$row["user_image"]}' alt='Product Image' width='200' height='200'>
+            <img src='user_uploads/{$row["user_image"]}' alt='User Profile Image' width='200' height='200'>
             <p class='mb-4'><strong>Email:</strong> {$row['email']}</p>
 
 
@@ -69,7 +69,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <a href='edit_order.php?id={$row['order_id']}' class='mt-auto w-fit bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-900'>Edit</a>
 
                 <a href='delete_order.php?id={$row['order_id']}' 
-                onclick=\"return confirm('Are you sure you want to delete this product?');\"
+                onclick=\"return confirm('Are you sure you want to delete this order?');\"
                 class='mt-auto w-fit bg-red-500 text-white px-4 py-2 rounded hover:bg-red-900'>Delete</a>
 
             </div>
@@ -87,19 +87,19 @@ while ($row = mysqli_fetch_assoc($result)) {
             <hr />
 
 
-            <p class='font-bold text-xl'>Product Information</p>
+            <p class='mt-4 font-bold text-xl text-indigo-500'>Product Information</p>
             <p class='text-sm text-gray-600 mb-2'><strong>Product ID:</strong> {$row['product_id']}</p>
-            <img src='productphotos/{$row["product_image"]}' alt='Product Image' width='200' height='200'>
+            <img src='product_uploads/{$row["product_image"]}' alt='Product Image' width='200' height='200'>
             <h2 class='text-xl font-semibold mb-2'>{$row['prod_name']}</h2>
-            <p><strong>Price:</strong> \${$row['product_price']}</p>
+            <p class='mb-4'><strong>Price:</strong> \${$row['product_price']}</p>
 
 
             <hr />
 
-            <p class='font-bold text-xl'>Customer Information:</p>
+            <p class='mt-4 font-bold text-xl text-green-500'>Customer Information:</p>
             <p class='text-sm text-gray-600 mb-2'><strong>User ID:</strong> {$row['users_id']}</p>
             <p class='mb-2'><strong>{$row['first_name']} {$row['last_name']}</strong> </p>
-            <img src='user_uploads/{$row["user_image"]}' alt='User Image' width='200' height='200'>
+            <img src='user_uploads/{$row["user_image"]}' alt='User Profile Image' width='200' height='200'>
             <p class='mb-4'><strong>Email:</strong> {$row['email']}</p>
 
         </div>

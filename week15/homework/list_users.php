@@ -14,7 +14,7 @@
     session_start(); // Start the session.
     include 'includes/header.html';
     // include 'navigation.php';
-    // include 'redirectMessages.php';
+    include 'redirectMessages.php';
     
   ?>
 </div>
@@ -30,7 +30,7 @@ require('../mysqli_connect.php'); // use require because we want to force this t
 
 echo "<h1 class='text-6xl text-green-500 mt-28 mb-8 mx-24'>List of Users</h1>";
 
-// showRedirectMessage();
+showRedirectMessage();
 //And now to perform a simple query to make sure it's working
 $query = "SELECT * FROM users_tbl";
 
@@ -67,7 +67,7 @@ echo "
 while ($row = mysqli_fetch_assoc($result)) {
   if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
     echo "
-        <div class='bg-white shadow-md shadow-indigo-200 rounded-lg p-6 h-full flex flex-col'>
+        <div class='bg-white shadow-md shadow-indigo-200 rounded-lg p-6 h-full w-fit flex flex-col'>
 
             <img src='user_uploads/{$row["user_image"]}' alt='Profile Image' width='300' height='300'>
 
@@ -90,7 +90,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     ";
   } else {
     echo "
-        <div class='bg-white shadow-md shadow-indigo-200 rounded-lg p-6 h-full flex flex-col'>
+        <div class='bg-white shadow-md shadow-indigo-200 rounded-lg p-6 h-full w-fit flex flex-col'>
 
             <img src='user_uploads/{$row["user_image"]}' alt='Profile Image' width='300' height='300'>
 
@@ -114,6 +114,6 @@ echo "</div>";
 include 'includes/footer.html';
 ?>
 
-<!-- <script src="./scripts/flashRedirectMsg.js"></script> -->
+<script src="./scripts/flashRedirectMsg.js"></script>
 </body>
 </html>
