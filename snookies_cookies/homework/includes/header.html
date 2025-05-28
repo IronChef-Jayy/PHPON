@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title><?php echo $page_title; ?></title>
+	<link href="css/sticky-footer-navbar.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+	</head>
+
+	<body>
+		<nav class="bg-gray-100 shadow-md fixed top-0 w-full z-50">
+			<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+				<div class="text-xl font-semibold text-gray-800 flex items-center">
+					<a class="navbar-brand" href="#">World Famous</a>
+					<img src="./images/chef.png" alt="Company Logo" class="mx-auto" width="50px" height="50px" >
+				</div>
+
+				<div id="navbar" class="space-x-6">
+					<ul class="flex space-x-4 text-gray-700 font-medium">
+
+						<li class="active">
+							<?php // Create a view users link for admin:
+								if (isset($_SESSION['users_id'])) {
+									echo '<a href="loggedin.php">Home</a>';
+								} else {
+									echo '<a href="index.php">Home</a>';
+									
+								}
+							?>
+							
+						</li>
+
+						<li>
+							<a href="list_products.php" class="hover:text-indigo-600">Products</a>
+						</li>
+
+						<li>
+							<?php // Create a view users link for admin:
+								if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' || $_SESSION['user_role'] == 'employee')) {
+									echo '<a href="list_users.php" class="hover:text-green-600">View Users</a>';
+								}
+							?>
+						</li>
+
+						<li>
+							<?php // Create a view orders link for admin:
+								if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' || $_SESSION['user_role'] == 'employee')) {
+									echo '<a href="list_orders.php" class="hover:text-blue-600">View Orders</a>';
+								}
+							?>
+						</li>
+
+						<li>
+							<?php // create register/add user link for customer:
+								if (!isset($_SESSION['user_role'])) {
+									echo '<a href="register.php">Register</a>';
+								}
+							?>
+						</li>
+
+						<li>
+							<?php // Create a login/logout link:
+								if (isset($_SESSION['users_id'])) {
+									echo '<a href="logout.php">Logout</a>';
+								} else {
+									echo '<a href="login.php">Login</a>';
+								}
+							?>
+						</li>
+
+						
+
+
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+<!-- Script 12.10 - header.html -->
